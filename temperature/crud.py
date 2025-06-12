@@ -20,6 +20,7 @@ async def create_temperature(
         date_time=temperature.date_time,
     )
     result = await db.execute(query)
+    await db.commit()
     return {**temperature.model_dump(), "id": result.lastrowid}
 
 
